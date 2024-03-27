@@ -1,0 +1,18 @@
+Note : Use gitbash in windows
+To create a virtual environment,
+    python -m virtualenv .venv
+
+To activate virtual environment,
+ (@windows) source .venv/Scripts/activate
+ (@mac/nux) source .venv/bin/activate
+
+Installing requirements:
+    pip install -r requirements.txt
+
+Running the server:
+    python manage.py runserver
+
+Now visit http://127.0.0.1:8000/ to check the server
+
+To format the python code:
+    python -m black .
