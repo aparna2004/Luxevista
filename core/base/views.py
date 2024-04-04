@@ -17,7 +17,7 @@ def registerCustomer(request):
         form = CustomerCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = ''
+            user.username = ""
             user.save()
             login(request, user)
             return redirect("personal_details")
@@ -80,4 +80,4 @@ def book(request):
 
 def bookRoom(request, pk):
     rooms = Room.objects.filter(hotel=pk)
-    return render('base/book_room.html', {"rooms": rooms})
+    return render(request, "base/book_room.html", {"rooms": rooms})

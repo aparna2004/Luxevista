@@ -8,19 +8,18 @@
   </head>
   <body>
     {%for hotel in hotels%}
-      <div class="container">
-        <img
-          src="{{hotel.image.url}}"
-          alt="Image of {{hotel.name}}"
-          width="200"
-          height="200"
-        />
-        <p>{{hotel.name}}</p>
-        <p>{{hotel.rating}}</p>
-        <p>{{hotel.location}}</p>
-        <a href="{% url 'hotel' hotel.id %}"></a>
-      </div>
-      {%endfor%}
-      
+    <div class="container">
+      <img
+        src="{{hotel.image.url}}"
+        alt="Image of {{hotel.name}}"
+        width="200"
+        height="200"
+      />
+      <p>{{hotel.name}}</p>
+      <p>{{hotel.rating}}</p>
+      <p>{{hotel.location}}</p>
+      <a href="{% url 'hotel' hotel.id %}"> Choose</a>
+    </div>
+    {%endfor%}
   </body>
 </html>

@@ -115,7 +115,7 @@ class RoomData(models.Model):
     class RoomType(models.TextChoices):
         SUITE = "SUITE", "Suite"
         DELUXE = "DELUXE", "Deluxe"
-        SUPER_DELUXXE = "SUPER_DELUXE", "Super_deluxe"
+        SUPER_DELUXE = "SUPER_DELUXE", "Super_deluxe"
 
     room = models.OneToOneField(Room, on_delete=models.CASCADE)
     type = models.CharField(choices=RoomType.choices, default=RoomType.SUITE, max_length=20)

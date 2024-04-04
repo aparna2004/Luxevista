@@ -6,8 +6,25 @@
   <title>Document</title>
 </head>
 <body>
-  {%for room in rooms%}
-
-  {%endfor%}
+  <form action="" method="POST">
+    {%csrf_token%}
+    <label for="from">From :</label>
+    <input type="date" name="from_date" id="from">
+    <br>
+    <label for="to">To :</label>
+    <input type="date" name="to_date" id="to">
+    <br>
+    <label for="type">Pick room type:</label>
+    <select name="room_type" id="type">
+      <option value="SUITE"> Suit</option>
+      <option value="DELUXE"> Deluxe</option>
+      <option value="SUPER_DELUXE"> Super Deluxe</option>
+    </select>
+    <br>
+    <label for="num">Number of persons :</label>
+    <input type="number" name="num" id="num">
+    <br>
+    <button>Check for rooms!</button>
+  </form>
 </body>
 </html>
