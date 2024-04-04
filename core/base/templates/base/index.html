@@ -15,17 +15,19 @@
       <img src="{%static 'images/gato.jpeg'%}" alt="A cat should appear here" />
     </div>
 
-    {%if request.user.is_authenticated%}
-    {% comment %} <p>Bitch youre logged in</p> {% endcomment %}
+    {%if request.user.is_authenticated%} {% comment %}
+    <p>Bitch youre logged in</p>
+    {% endcomment %}
     <a href="{% url 'logout'%}"> Click here to logout</a>
+    <a href="{% url 'book'%}"> Click here to make reservation</a>
 
     {%else%}
     <a href="{% url 'login'%}"> Click here to login</a>
     <a href="{% url 'register_customer'%}"> Click here to register</a>
     <br />
-    {% comment %} <a href="{% url 'book'%}"> Click here to make reservation</a>
+    {% comment%}
     <a href="{% url 'bookings'%}"> Click here to view bookings</a>
-    <a href="{% url 'cancel'%}"> Click here to cancel reservation</a> {% endcomment %}
-    {%endif%}
+    <a href="{% url 'cancel'%}"> Click here to cancel reservation</a>
+    {%endcomment%} {%endif%}
   </body>
 </html>

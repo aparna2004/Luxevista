@@ -37,14 +37,13 @@ class User(AbstractUser):
 
     email = models.EmailField(_("email address"), unique=True)
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ("name",)
+    REQUIRED_FIELDS = ("name","username")
     name = models.CharField(max_length=100)
     is_staff = models.BooleanField(default=True)
     gender = models.CharField(
         choices=Gender.choices, default=Gender.OTHER, max_length=30
     )
     role = models.CharField(max_length=20, choices=Role.choices, default=Role.ADMIN)
-
     phoneNumber = models.PositiveBigIntegerField(
         null=True,
         validators=[
@@ -83,6 +82,7 @@ class Bill(models.Model):
 
 class Hotel(models.Model):
     name = models.CharField(max_length=20)
+    image = models.ImageField(upload_to="hotel_images/", null=True)
     rating = models.DecimalField(
         max_digits=3,
         decimal_places=2,

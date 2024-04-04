@@ -7,5 +7,6 @@ urlpatterns = [
     path("additional_details/", views.additionalDetails, name="personal_details"),
     path("login/", views.loginUser, name="login"),
     path("logout/", views.logoutUser, name="logout"),
-
+    path("book/", views.book, name="book"),
+    path('hotel/<str:pk>',views.bookRoom, name="hotel"),
 ]

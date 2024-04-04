@@ -17,6 +17,7 @@ def registerCustomer(request):
         form = CustomerCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.username = ''
             user.save()
             login(request, user)
             return redirect("personal_details")
@@ -44,22 +45,23 @@ def additionalDetails(request):
         return redirect("home")
     return render(request, "base/additional_details.html")
 
+
 def loginUser(request):
     if request.user.is_authenticated:
-        return redirect('home')
-    if request.method == 'POST':
-        mail = request.POST.get('email')
-        passwd = request.POST.get('password')
+        return redirect("home")
+    if request.method == "POST":
+        mail = request.POST.get("email")
+        passwd = request.POST.get("password")
 
         try:
-            user = User.objects.get(email = mail)
+            user = User.objects.get(email=mail)
         except:
             messages.error(request, "Invalid user!")
 
-        user = authenticate(request,email = mail, password = passwd)
+        user = authenticate(request, email=mail, password=passwd)
         if user is not None:
-            login(request,user)
-            return redirect('home')
+            login(request, user)
+            return redirect("home")
         else:
             messages.error(request, "Incorrect username or password")
     return render(request, "base/login.html")
@@ -68,3 +70,14 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect("home")
+
+
+def book(request):
+    hotels = Hotel.objects.all().order_by("-rating")
+    context = {"hotels": hotels}
+    return render(request, "base/select_hotel.html", context)
+
+
+def bookRoom(request, pk):
+    rooms = Room.objects.filter(hotel=pk)
+    return render('base/book_room.html', {"rooms": rooms})
