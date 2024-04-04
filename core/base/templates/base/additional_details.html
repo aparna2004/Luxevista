@@ -1,0 +1,33 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{%static 'styles/style.css'%}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="POST">
+      {%csrf_token%}
+      <label for="phone_no">Phone number</label>
+      <input type="number" name="phone_no" id="phone_no" />
+      <br />
+      <label for="dob">Date of Birth</label>
+      <input type="date" name="dob" id="dob" />
+      <br />
+      
+      <button>OK</button>
+      <label for="">Gender : </label>
+      <input type="radio" name="gender" id="m" value="MALE" />
+      <label for="m">Male</label>
+      <input type="radio" name="gender" id="f" value="FEMALE" />
+      <label for="m">Feale</label>
+      <input type="radio" name="gender" id="o" value="OTHER" />
+      <label for="m">Other</label>
+      <br />
+      <label for="pref">Preference</label>
+      <textarea name="pref" id="pref" cols="30" rows="10"></textarea>
+    </form>
+  </body>
+</html>

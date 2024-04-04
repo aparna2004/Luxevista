@@ -37,6 +37,7 @@ class User(AbstractUser):
 
     email = models.EmailField(_("email address"), unique=True)
     USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ("name",)
     name = models.CharField(max_length=100)
     is_staff = models.BooleanField(default=True)
     gender = models.CharField(
@@ -73,10 +74,10 @@ class User(AbstractUser):
 class Bill(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     booking = models.ForeignKey("Reservation", on_delete=models.CASCADE)
-    customer = models.ForeignKey(User, on_delete=models.SET_NULL)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     amount = models.PositiveIntegerField(default=0)
     status = models.CharField(
-        choices=PaymentStatus.choices, default=PaymentStatus.PENDING
+        choices=PaymentStatus.choices, default=PaymentStatus.PENDING , max_length=10
     )
 
 
@@ -117,7 +118,7 @@ class RoomData(models.Model):
         SUPER_DELUXXE = "SUPER_DELUXE", "Super_deluxe"
 
     room = models.OneToOneField(Room, on_delete=models.CASCADE)
-    type = models.CharField(choices=RoomType.choices, default=RoomType.SUITE)
+    type = models.CharField(choices=RoomType.choices, default=RoomType.SUITE, max_length=20)
     isAC = models.BooleanField(default=True)
     number_of_beds = models.PositiveIntegerField(_("number of beds"), default=1)
 
@@ -131,7 +132,7 @@ class Service(models.Model):
     type = models.CharField(_("type of service"), max_length=30)
     amount = models.PositiveIntegerField(_("amount charged for the service"))
     status = models.CharField(
-        choices=PaymentStatus.choices, default=PaymentStatus.PENDING
+        choices=PaymentStatus.choices, default=PaymentStatus.PENDING, max_length=10
     )
 
 
@@ -173,5 +174,5 @@ class Reservation(models.Model):
     booked_time = models.DateTimeField(auto_now_add=True)
 
     isCancelled = models.BooleanField(default=False)
-    method = models.CharField(choices=PaymentMethod.choices)
-    payment_status = models.CharField(choices=PaymentStatus.choices, default=PaymentStatus.PENDING)
+    method = models.CharField(choices=PaymentMethod.choices, max_length=10)
+    payment_status = models.CharField(choices=PaymentStatus.choices, default=PaymentStatus.PENDING, max_length=10)
