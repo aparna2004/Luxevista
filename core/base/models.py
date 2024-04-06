@@ -7,6 +7,29 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator, RegexValidator
 
 
+class Room(models.Model):
+    hotel = models.ForeignKey("Hotel", null=False, on_delete=models.CASCADE)
+    room_number = models.CharField(
+        max_length=6,
+        validators=[
+            RegexValidator(
+                regex=r"^[A-Z]{1}\d{3}$",
+                message="Enter a valid registration number in the format ABC123.",
+                code="invalid_registration",
+            ),
+        ],
+    )
+    is_available = models.BooleanField(default=True)
+
+    class RoomType(models.TextChoices):
+        SUITE = "SUITE", "Suite"
+        DELUXE = "DELUXE", "Deluxe"
+        SUPER_DELUXE = "SUPER_DELUXE", "Super_deluxe"
+
+    type = models.CharField(choices=RoomType.choices, default=RoomType.SUITE, max_length=20)
+    isAC = models.BooleanField(default=True)
+    number_of_beds = models.PositiveIntegerField(_("number of beds"), default=1)
+
 class PaymentStatus(models.TextChoices):
     PAID = "PAID", "Paid"
     PENDING = "PENDING", "Pending"
@@ -51,7 +74,7 @@ class User(AbstractUser):
         ],
     )
     dob = models.DateField(null=True)
-    preference = models.TextField(null=True)
+    preference = models.CharField(choices=Room.RoomType.choices ,null=True, max_length=20)
 
     created_on = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -92,35 +115,6 @@ class Hotel(models.Model):
     )
     location = models.CharField(_("location"), max_length=50)
 
-
-class Room(models.Model):
-    hotel = models.ForeignKey(Hotel, null=False, on_delete=models.CASCADE)
-    room_number = models.CharField(
-        max_length=6,
-        validators=[
-            RegexValidator(
-                regex=r"^[A-Z]{1}\d{3}$",
-                message="Enter a valid registration number in the format ABC123.",
-                code="invalid_registration",
-            ),
-        ],
-    )
-    is_available = models.BooleanField(default=True)
-    max_occupants = models.PositiveIntegerField(
-        _("maximum number of occupants"), default=0
-    )
-
-
-class RoomData(models.Model):
-    class RoomType(models.TextChoices):
-        SUITE = "SUITE", "Suite"
-        DELUXE = "DELUXE", "Deluxe"
-        SUPER_DELUXE = "SUPER_DELUXE", "Super_deluxe"
-
-    room = models.OneToOneField(Room, on_delete=models.CASCADE)
-    type = models.CharField(choices=RoomType.choices, default=RoomType.SUITE, max_length=20)
-    isAC = models.BooleanField(default=True)
-    number_of_beds = models.PositiveIntegerField(_("number of beds"), default=1)
 
 
 class Service(models.Model):
