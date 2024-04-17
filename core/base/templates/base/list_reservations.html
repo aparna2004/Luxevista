@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {%if reservations%}
+    {%for r in reservations%}
+        {{r.booked_from}} to {{r.booked_till}}
+        <a href="{%url 'cancel' reservation.id %}"></a>
+    {%endfor%}
+  {%endif%}
+</body>
+</html>

@@ -20,7 +20,8 @@
     {% endcomment %}
     <a href="{% url 'logout'%}"> Click here to logout</a>
     <a href="{% url 'book'%}"> Click here to make reservation</a>
-
+    <a href="{% url 'list'%}"> Click here to view/cancel reservation</a>
+    
     {%else%}
     <a href="{% url 'login'%}"> Click here to login</a>
     <a href="{% url 'register_customer'%}"> Click here to register</a>

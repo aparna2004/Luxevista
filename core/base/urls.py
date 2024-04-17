@@ -9,4 +9,5 @@ urlpatterns = [
     path("logout/", views.logoutUser, name="logout"),
     path("book/", views.book, name="book"),
     path('hotel/<str:pk>',views.bookRoom, name="hotel"),
+    path("reservations/", views.listReservations, name="list"),
 ]

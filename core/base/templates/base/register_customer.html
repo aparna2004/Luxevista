@@ -13,9 +13,14 @@
       {%for field in form %}
         <div>
           <label class=""> {{field.label}} </label>
-          {{field.errors}} {{field}}
+          {{field.errors}} 
+          
+          {{field}}
         </div>
       {%endfor%}
+
+
+
       <button>
         OK
       </button>
