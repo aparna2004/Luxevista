@@ -8,8 +8,9 @@
 <body>
   {%if reservations%}
     {%for r in reservations%}
-        {{r.booked_from}} to {{r.booked_till}}
-        <a href="{%url 'cancel' reservation.id %}"></a>
+        <div>
+            <a href="{%url 'cancel' r.id %}"> {{r.booked_from}} to {{r.booked_till}}</a>
+        </div>
     {%endfor%}
   {%endif%}
 </body>

@@ -196,12 +196,24 @@ def bookRoom(request, pk):
 
         # Redirect or render a success message
         return render(
-            request, "base/success.html", {"allocated_rooms": allocated_rooms,"amounnt" : money }
+            request, "base/success.html", {"allocated_rooms": allocated_rooms,"amount" : money }
         )
 
     # If GET request, render the search form
     return render(request, "base/book_room.html")
 
 def listReservations(request):
-    reservations = Reservation.objects.filter(user = request.user, isCancelled = False)
+    reservations = Reservation.objects.filter(customer = request.user, isCancelled = False)
     return render(request, "base/list_reservations.html",{"reservations" : reservations})
+
+def cancel(request, pk):
+    if request.method == "POST":
+        reservation = Reservation.objects.get(id = pk)
+        reservation.isCancelled = True
+        reservation.save()
+        b = Bill.objects.get(booking = reservation)
+        b.status = "CANCELLED"
+        b.save()
+        return redirect('home')
+    return render(request, "base/cancel.html")
+
