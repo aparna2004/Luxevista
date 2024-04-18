@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yerba mala</title>
+  <title>Success</title>
 </head>
 <body>
-  <p>Room kedachiruchu maamae</p>
+  <p>Yay! Room is available.</p>
+  <p>Allocated rooms: </p>
   {%for room in allocated_rooms%}
-  <p>Room number indha : {{room.id}}</p>
+  <p>{{room.id}}</p>
   {%endfor%}
-  <p>Duddu irukkuda da? {{amount}}</p>
+  <p>Total amount : {{amount}}</p>
 </body>
 </html>
