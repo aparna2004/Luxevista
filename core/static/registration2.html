@@ -1,0 +1,74 @@
+<!--{%load static%}-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet" href="css/plugins.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+  </head>
+  <body>
+    
+      <!--{%csrf_token%}-->
+    <div style="display:flex; justify-content: center;">
+        <div class="col-md-5 offset-md-1">
+            <div class="booking-box">
+                <div class="head-box">
+                    <h6>HOTEL REGISTRATION</h6>
+                    <h4>Additional Details</h4>
+                </div>
+                <div class="booking-inner clearfix">
+                    <form action="rooms2.html" class="form1 clearfix" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input1_wrapper">
+                                    <label for="phone_no" >Phone Number</label>
+                                    <div class="input1_inner">
+                                        <input type="number" name="phone_no" id="phone_no" placeholder="Enter 10 digit Phone Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input1_wrapper">
+                                    <label for="dob">Date Of Birth</label>
+                                    <div class="input1_inner">
+                                        <input type="date" name ="dob" id="dob" placeholder="Date of Birth">
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <div class="input1_wrapper">
+                                    <label for="">Gender : </label>
+                                    <div class="input1_inner">
+                                            <label for="m">Male</label>
+                                            <input type="radio" name="gender" id="m" value="MALE" />
+                                            <label for="m">Female</label>
+                                            <input type="radio" name="gender" id="f" value="FEMALE" />
+                                            <label for="m">Other</label>
+                                            <input type="radio" name="gender" id="o" value="OTHER" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input1_wrapper">
+                                    <label for="pref">Preference</label>
+                                    <div class="input1_inner">
+                                        <textarea name="pref" id="pref" cols="30" rows="1" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn-form1-submit mt-15">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

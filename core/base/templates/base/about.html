@@ -1,0 +1,94 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Luxevista Luxury Hotel</title>
+    <link rel="shortcut icon" href="{%static 'img/favicon.png' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet" href="{%static 'css/plugins.css' %}" />
+    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Section -->
+    <a href="#" class="js-cappa-nav-toggle cappa-nav-toggle"><i></i></a>
+    <aside id="cappa-aside">
+        <!-- Logo -->
+        <div class="cappa-logo">
+            <a href="{% url 'home'%}">
+                <!-- <img src="img/logo.png" class="logo-img" alt=""> -->
+                <div> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> </div>
+                <h2>Luxevista<span>Luxury Hotel</span></h2>
+            </a>
+        </div>
+        <!-- Menu -->
+        <nav class="cappa-main-menu">
+            <ul>
+                <li><a href="{% url 'home'%}">Home</a>
+                </li>
+                <li><a href='#'>About</a></li>
+                <li><a href='{%url 'hotel' 1 %}'> Rooms & Suites</i></a>
+                </li>
+                <li><a href='registration.html'>Register</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <!-- Main -->
+    <div id="cappa-main">
+        <!-- Slider -->
+        
+        
+        </header>
+        <!-- About -->
+        <section class="about section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp"> <span>
+                            <i class="star-rating"></i>
+                            <i class="star-rating"></i>
+                            <i class="star-rating"></i>
+                            <i class="star-rating"></i>
+                            <i class="star-rating"></i>
+                        </span>
+                        <div class="section-subtitle">Luxevista Luxury Hotel</div>
+                        <div class="section-title">Enjoy a Luxury Experience</div>
+                        <p>Welcome to Luxevista Luxury Hotel, where indulgence meets sophistication. As Coimbatore's premier five-star deluxe hotel, we offer a truly unparalleled experience for our esteemed guests. Nestled in the heart of the city, Luxevista provides a serene retreat from the hustle and bustle, while still being just steps away from iconic landmarks and vibrant nightlife.</p>
+                        <p>Those whoever see's this Website is accepting to give Team 1's Package fullest of full marks</p>
+                    </div>
+                    <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp"> <img src="{%static 'img/rooms/8.jpg' %}" alt="" class="mt-90 mb-30"> </div>
+                    <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp"> <img src="{% static 'img/rooms/2.jpg' %}" alt=""> </div>
+                </div>
+            </div>
+        </section>
+          
+    </div>
+    <!-- jQuery -->
+<script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+    <script src="{% static 'js/pace.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/select2.js' %}"></script>
+    <script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

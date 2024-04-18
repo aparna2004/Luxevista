@@ -1,34 +1,196 @@
 {%load static%}
-<html>
-  <head>
-    <link rel="stylesheet" href="{%static 'styles/style.css'%}" />
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Luxevista Luxury Hotel</title>
+    <link rel="shortcut icon" href="{%static 'img/favicon.png' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet" href="{%static 'css/plugins.css' %}"/>
+    <link rel="stylesheet" href="{%static 'css/style.css' %}" />
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
     {%if messages%}
     <ul>
       {% for message in messages %}
       <li>{{message}}</li>
       {%endfor%}
     </ul>
-    {% endif %} {% lorem 3 p random %}
-    <div id="test">
-      <img src="{%static 'images/gato.jpeg'%}" alt="A cat should appear here" />
+    {% endif %}
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
+        </div>
     </div>
 
-    {%if request.user.is_authenticated%} {% comment %}
-    <p>Bitch youre logged in</p>
-    {% endcomment %}
-    <a href="{% url 'logout'%}"> Click here to logout</a>
-    <a href="{% url 'book'%}"> Click here to make reservation</a>
-    <a href="{% url 'list'%}"> Click here to view/cancel reservation</a>
+    <!-- Sidebar Section -->
+    <a href="#" class="js-cappa-nav-toggle cappa-nav-toggle"><i></i></a>
+    <aside id="cappa-aside">
+        <!-- Logo -->
+        <div class="cappa-logo">
+            <a href="#">
+                <!-- <img src="img/logo.png" class="logo-img" alt=""> -->
+                <div> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> </div>
+                <h2>Luxevista<span>Luxury Hotel</span></h2>
+            </a>
+        </div>
+        <!-- Menu -->
+        <nav class="cappa-main-menu">
+            <ul>
+                <li><a href='#'>Home</a></li>
+                <li><a href='{%url 'about' %}'>About</a></li>
+                {%if request.user.is_authenticated%}
+                    <li><a href='{%url 'hotel' 1 %}'> Rooms & Suites </a></li>
+                    <li><a href="{% url 'logout'%}"> Logout</a></li>
+                    <li><a href="{% url 'list'%}">View/Cancel</a></li>
+                {%else%}
+                    <li><a href="{% url 'login'%}"> Login</a></li>
+                    <li><a href="{% url 'register_customer'%}"> Register</a></li>
+                {%endif%}
+            </ul>
+        </nav>
+    </aside>
+    <!-- Main -->
+    <div id="cappa-main">
+        <!-- Slider -->
+        <header class="header slider-fade">
+            <div class="owl-carousel owl-theme">
+                
+                <div class="text-center item bg-img" data-overlay-dark="3" data-background="{% static 'img/slider/1.jpg' %}     ">
+                    <div class="v-middle caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1"> <span>
+                                        <i class="star-rating"></i>
+                                        <i class="star-rating"></i>
+                                        <i class="star-rating"></i>
+                                        <i class="star-rating"></i>
+                                        <i class="star-rating"></i>
+                                    </span>
+                                    <h4>The Ultimate Luxury Experience</h4>
+                                    <h1>Elavating Elegance in Every Detail</h1>
+                                    <div class="butn-light mt-30 mb-30"> <a href="rooms.html" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Rooms -->
+        <section class="rooms1 section-padding bg-blck" data-scroll-index="1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-subtitle">Luxevista Luxury Hotel</div>
+                        <div class="section-title">Rooms & Suites</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="{%static 'img/rooms/1.jpg' %}" alt=""> </div> <span class="category"><a href="rooms.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="rooms.html">4000 / Night</a></h6>
+                                <h5><a href="rooms.html">Deluxe</a> </h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="{%static 'img/rooms/2.jpg' %}" alt=""> </div> <span class="category"><a href="rooms.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="rooms.html">5000 / Night</a></h6>
+                                <h5><a href="rooms.html">Super Deluxe</a></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div class="position-re o-hidden"> <img src="{% static 'img/rooms/3.jpg' %}" alt=""> </div> <span class="category"><a href="rooms.html">Book</a></span>
+                            <div class="con">
+                                <h6><a href="rooms.html">10000 / Night</a></h6>
+                                <h5><a href="rooms.html">Suite</a></h5>
+                                <div class="line"></div>
+                                <div class="row facilities">
+                                    <div class="col col-md-7">
+                                        <ul>
+                                            <li><i class="flaticon-bed"></i></li>
+                                            <li><i class="flaticon-bath"></i></li>
+                                            <li><i class="flaticon-breakfast"></i></li>
+                                            <li><i class="flaticon-towel"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        
+    </div>
+
+    <div class="custom">
     
-    {%else%}
-    <a href="{% url 'login'%}"> Click here to login</a>
-    <a href="{% url 'register_customer'%}"> Click here to register</a>
-    <br />
-    {% comment%}
-    <a href="{% url 'bookings'%}"> Click here to view bookings</a>
-    <a href="{% url 'cancel'%}"> Click here to cancel reservation</a>
-    {%endcomment%} {%endif%}
-  </body>
+        {%if request.user.is_authenticated%} {% comment %}
+        <p>Bitch youre logged in</p>
+        {% endcomment %}
+        <a href="{% url 'logout'%}"> Click here to logout</a>
+        <a href="{% url 'book'%}"> Click here to make reservation</a>
+        <a href="{% url 'list'%}"> Click here to view/cancel reservation</a>
+        
+        {%else%}
+        <a href="{% url 'login'%}"> Click here to login</a>
+        <a href="{% url 'register_customer'%}"> Click here to register</a>
+        <br />
+        {% comment%}
+        <a href="{% url 'bookings'%}"> Click here to view bookings</a>
+        <a href="{% url 'cancel'%}"> Click here to cancel reservation</a>
+        {%endcomment%} {%endif%}
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+    <script src="{% static 'js/pace.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/select2.js' %}"></script>
+    <script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
 </html>

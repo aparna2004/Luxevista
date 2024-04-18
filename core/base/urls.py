@@ -11,4 +11,5 @@ urlpatterns = [
     path("hotel/<str:pk>", views.bookRoom, name="hotel"),
     path("reservations/", views.listReservations, name="list"),
     path("cancel/<str:pk>", views.cancel, name="cancel"),
+    path("about/", views.aboutView, name="about"),
 ]

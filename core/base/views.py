@@ -217,3 +217,6 @@ def cancel(request, pk):
         return redirect('home')
     return render(request, "base/cancel.html")
 
+
+def aboutView(request):
+    return render(request, "base/about.html")
