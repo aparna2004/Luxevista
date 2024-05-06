@@ -77,6 +77,7 @@ def logoutUser(request):
     return redirect("home")
 
 
+@login_required(login_url="login")
 def book(request):
     hotels = Hotel.objects.all().order_by("-rating")
     context = {"hotels": hotels}
@@ -109,13 +110,14 @@ def calculate_bill_amount(booking):
     is_seasonal = False  # You need to implement logic to determine this based on your requirements
 
     # Calculate the total amount
-    
+
     if is_seasonal:
         total_amount += room_price.seasonal
 
     return total_amount
 
 
+@login_required(login_url="login")
 def bookRoom(request, pk):
     if request.method == "POST":
         from_date = request.POST.get("from_date")
@@ -202,10 +204,14 @@ def bookRoom(request, pk):
     # If GET request, render the search form
     return render(request, "base/book_room.html")
 
+
+@login_required(login_url="login")
 def listReservations(request):
     reservations = Reservation.objects.filter(customer = request.user, isCancelled = False)
     return render(request, "base/list_reservations.html",{"reservations" : reservations})
 
+
+@login_required(login_url="login")
 def cancel(request, pk):
     if request.method == "POST":
         reservation = Reservation.objects.get(id = pk)

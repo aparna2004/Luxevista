@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="{%static 'css/plugins.css' %}"/>
     <link rel="stylesheet" href="{%static 'css/style.css' %}" />
+   
+    {% comment %} TODO: Copy this everywhere {% endcomment %}
+   
+    <link rel="icon" href="{%static 'images/images.png'%}"/>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     {%if messages%}
@@ -33,7 +37,6 @@
         <!-- Logo -->
         <div class="cappa-logo">
             <a href="#">
-                <!-- <img src="img/logo.png" class="logo-img" alt=""> -->
                 <div> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> </div>
                 <h2>Luxevista<span>Luxury Hotel</span></h2>
             </a>
@@ -73,7 +76,7 @@
                                     </span>
                                     <h4>The Ultimate Luxury Experience</h4>
                                     <h1>Elavating Elegance in Every Detail</h1>
-                                    <div class="butn-light mt-30 mb-30"> <a href="rooms.html" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                                    <div class="butn-light mt-30 mb-30"> <a href='{%url 'hotel' 1 %}' data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
                                 </div>
                             </div>
                         </div>
@@ -93,10 +96,10 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="item">
-                            <div class="position-re o-hidden"> <img src="{%static 'img/rooms/1.jpg' %}" alt=""> </div> <span class="category"><a href="rooms.html">Book</a></span>
+                            <div class="position-re o-hidden"> <img src="{%static 'img/rooms/1.jpg' %}" alt=""> </div> <span class="category"><a href='{%url 'hotel' 1 %}'>Book</a></span>
                             <div class="con">
-                                <h6><a href="rooms.html">4000 / Night</a></h6>
-                                <h5><a href="rooms.html">Deluxe</a> </h5>
+                                <h6><a href='{%url 'hotel' 1 %}'>4000 / Night</a></h6>
+                                <h5><a href='{%url 'hotel' 1 %}'>Deluxe</a> </h5>
                                 <div class="line"></div>
                                 <div class="row facilities">
                                     <div class="col col-md-7">
@@ -114,10 +117,10 @@
                     </div>
                     <div class="col-md-4">
                         <div class="item">
-                            <div class="position-re o-hidden"> <img src="{%static 'img/rooms/2.jpg' %}" alt=""> </div> <span class="category"><a href="rooms.html">Book</a></span>
+                            <div class="position-re o-hidden"> <img src="{%static 'img/rooms/2.jpg' %}" alt=""> </div> <span class="category"><a href='{%url 'hotel' 1 %}'>Book</a></span>
                             <div class="con">
-                                <h6><a href="rooms.html">5000 / Night</a></h6>
-                                <h5><a href="rooms.html">Super Deluxe</a></h5>
+                                <h6><a href='{%url 'hotel' 1 %}'>5000 / Night</a></h6>
+                                <h5><a href='{%url 'hotel' 1 %}'>Super Deluxe</a></h5>
                                 <div class="line"></div>
                                 <div class="row facilities">
                                     <div class="col col-md-7">
@@ -134,10 +137,10 @@
                     </div>
                     <div class="col-md-4">
                         <div class="item">
-                            <div class="position-re o-hidden"> <img src="{% static 'img/rooms/3.jpg' %}" alt=""> </div> <span class="category"><a href="rooms.html">Book</a></span>
+                            <div class="position-re o-hidden"> <img src="{% static 'img/rooms/3.jpg' %}" alt=""> </div> <span class="category"><a href='{%url 'hotel' 1 %}'>Book</a></span>
                             <div class="con">
-                                <h6><a href="rooms.html">10000 / Night</a></h6>
-                                <h5><a href="rooms.html">Suite</a></h5>
+                                <h6><a href='{%url 'hotel' 1 %}'>10000 / Night</a></h6>
+                                <h5><a href='{%url 'hotel' 1 %}'>Suite</a></h5>
                                 <div class="line"></div>
                                 <div class="row facilities">
                                     <div class="col col-md-7">
@@ -157,24 +160,7 @@
         </section>        
     </div>
 
-    <div class="custom">
     
-        {%if request.user.is_authenticated%} {% comment %}
-        <p>Bitch youre logged in</p>
-        {% endcomment %}
-        <a href="{% url 'logout'%}"> Click here to logout</a>
-        <a href="{% url 'book'%}"> Click here to make reservation</a>
-        <a href="{% url 'list'%}"> Click here to view/cancel reservation</a>
-        
-        {%else%}
-        <a href="{% url 'login'%}"> Click here to login</a>
-        <a href="{% url 'register_customer'%}"> Click here to register</a>
-        <br />
-        {% comment%}
-        <a href="{% url 'bookings'%}"> Click here to view bookings</a>
-        <a href="{% url 'cancel'%}"> Click here to cancel reservation</a>
-        {%endcomment%} {%endif%}
-    </div>
     <!-- jQuery -->
     <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
     <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
