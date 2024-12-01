@@ -1,4 +1,4 @@
-# sistema-de-reserva-de-hotel
+# Luxevista
 A hotel reservation system implemented as a part of learning SDLC. 
 
 Case Study
