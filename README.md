@@ -1,7 +1,7 @@
 # Luxevista
 A hotel reservation system implemented as a part of learning SDLC. 
 
-Case Study
+### Case Study
 A Five star hotel decided to open up its reservation system for online booking. 
 - Consider the following requirements
 - Hotel has 700 rooms classified into multiple types ((Deluxe, Super Deluxe and Suite)
