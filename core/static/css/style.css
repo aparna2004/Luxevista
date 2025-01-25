@@ -151,8 +151,7 @@ button:hover {
     border: 0px solid transparent;
 }
 select {
-    padding: 10px;
-    border-radius: 5px;
+    padding: 23px;
 }
 table,
 th,
@@ -1929,6 +1928,83 @@ hr.border-2 {
 }
 
 
+/* ======= Accordion Box (for Faqs) style ======= */
+.accordion-box {
+    position: relative;
+      padding: 0;
+  }
+  .accordion-box .block {
+    position: relative;
+    background: #2b2b2b;
+    border-radius: 0px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  .accordion-box .block.active-block {
+    background-color: #2b2b2b;
+  }
+  .accordion-box .block:last-child {
+    margin-bottom: 0;
+  }
+  .accordion-box .block .acc-btn {
+      position: relative;
+      font-size: 20px;
+      line-height: 27px;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 20px 40px;
+      padding-right: 60px;
+      color: #fff;
+      transition: all 500ms ease;
+      font-family: 'Gilda Display', serif;;
+  }
+  .accordion-box .block .acc-btn .count {
+    color: #aa8453;
+    padding-right: 3px;
+  }
+  .accordion-box .block .acc-btn:before {
+    position: absolute;
+      right: 35px;
+      top: 20px;
+      height: 30px;
+      font-size: 14px;
+      font-weight: normal;
+      color: #aa8453;
+      line-height: 30px;
+      content: "\e61a";
+      font-family: "Themify";
+      transition: all 500ms ease;
+  }
+  .accordion-box .block .acc-btn.active {
+    background-color: #2b2b2b;
+      color: #aa8453;
+  }
+  .accordion-box .block .acc-btn.active:before {
+    color: "Themify";
+    content: "\e622";
+  }
+  .accordion-box .block .acc-content {
+    position: relative;
+    display: none;
+  }
+  .accordion-box .block .content {
+    position: relative;
+      padding: 0px 40px 30px;
+      background-color: #2b2b2b;
+      color: rgba(255,255,255,0.5);
+  }
+  .accordion-box .block .acc-content.current {
+    display: block;
+  }
+  .accordion-box .block .content .text {
+    display: block;
+    position: relative;
+    top: 0px;
+    display: block;
+  }
+  
+
+  
 /* ======= Rooms Page style ======= */
 .rooms-page h6 {
     position: relative;
@@ -2168,7 +2244,6 @@ input[type="date"] {
 .select2 {
     width: 100%;
     background: #222;
-    margin-bottom: 15px;
     border: 0px solid transparent;
 }
 .select2 *:focus {

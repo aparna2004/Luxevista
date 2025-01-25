@@ -60,7 +60,7 @@ class User(AbstractUser):
 
     email = models.EmailField(_("email address"), unique=True)
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ("name","username")
+    REQUIRED_FIELDS = ("name","username")   
     name = models.CharField(max_length=100)
     is_staff = models.BooleanField(default=True)
     gender = models.CharField(

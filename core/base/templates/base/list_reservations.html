@@ -1,17 +1,183 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Luxevista Luxury Hotel</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+        /* Accordion Box Styles */
+        .accordion-box {
+            position: relative;
+            padding: 0;
+        }
+
+        /* Accordion Item Styles */
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #2b2b2b;
+        }
+        /* Accordion Button Styles */
+        .accordion-button {
+            font-size: 20px;
+            line-height: 27px;
+            font-weight: 400;
+            cursor: pointer;
+            padding: 20px 40px;
+            padding-right: 60px;
+            color: #fff;  /* Default text color */
+            background-color: #2b2b2b;  /* Background color for the accordion item */
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            transition: all 500ms ease;
+            font-family: 'Gilda Display', serif;
+            width: 100%;
+            text-align: left;
+        }
+
+        /* When the accordion is expanded */
+        .accordion-button[aria-expanded="true"] {
+            color: #aa8453;  /* Change to the desired color when expanded */
+        }
+
+        /* When the accordion is collapsed */
+        .accordion-button[aria-expanded="false"] {
+            color: #fff;  /* Default color when collapsed */
+        }
+
+        /* Accordion Body Styles */
+        .accordion-body {
+            background-color: #2b2b2b;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .accordion-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .accordion-collapse {
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+        }
+
+        .accordion-collapse.show {
+            max-height: 1000px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #333;
+        }
+
+    </style>
 </head>
-<body>
-  {%if reservations%}
-    {%for r in reservations%}
-        <div>
-            <a href="{%url 'cancel' r.id %}"> {{r.booked_from}} to {{r.booked_till}}</a>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
         </div>
-    {%endfor%}
-  {%endif%}
+    </div>
+
+    <!-- Sidebar Section -->
+    <a href="#" class="js-cappa-nav-toggle cappa-nav-toggle"><i></i></a>
+    <aside id="cappa-aside">
+        <!-- Logo -->
+        <div class="cappa-logo">
+            <a href="{% url 'home' %}">
+                <div> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> <i class="star"></i> </div>
+                <h2>Luxevista<span>Luxury Hotel</span></h2>
+            </a>
+        </div>
+        <!-- Menu -->
+        <nav class="cappa-main-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'hotel' 1 %}"> Rooms & Suites </a></li>
+                    <li><a href="{% url 'logout' %}"> Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}"> Login</a></li>
+                    <li><a href="{% url 'register_customer' %}"> Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div id="cappa-main">
+        <!-- Reservation List Section -->
+        <section class="section-padding">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                      <h2 class="section-title">Reservation List</h2>
+                      {% if reservations %}
+                          <div class="accordion-box" id="accordionExample">
+                              {% for r in reservations %}
+                                  <div class="accordion-item">
+                                      <h2 class="accordion-header" id="heading{{ r.id }}">
+                                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ r.id }}" 
+                                                  aria-expanded="false" aria-controls="collapse{{ r.id }}">
+                                              Reservation: {{ r.booked_from }} to {{ r.booked_till }}
+                                          </button>
+                                      </h2>
+                                      <div id="collapse{{ r.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ r.id }}" data-bs-parent="#accordionExample">
+                                          <div class="accordion-body">
+                                              <strong>Reservation details:</strong>
+                                              <p>From: {{ r.booked_from }}</p>
+                                              <p>To: {{ r.booked_till }}</p>
+                                              <p>Status: {{ r.status }}</p>
+                                              <button type="button" class="btn-form1-submit" onclick="window.location.href='{% url 'cancel' r.id %}'">
+                                                Cancel Reservation
+                                            </button>
+                                            
+                                            
+                                          </div>
+                                      </div>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                      {% else %}
+                          <p>No reservations found.</p>
+                      {% endif %}
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      
+    </div>
+
+    <!-- jQuery and Scripts -->
+    <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+    <script src="{% static 'js/pace.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/select2.js' %}"></script>
+    <script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
 </body>
 </html>

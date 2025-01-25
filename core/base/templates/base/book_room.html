@@ -1,7 +1,4 @@
 {%load static%}
-    
-
-
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -14,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="{%static 'css/plugins.css' %}"/>
     <link rel="stylesheet" href="{%static 'css/style.css' %}" />
+
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
     <!-- Preloader -->
@@ -42,6 +40,7 @@
                 <li><a href='{%url 'about'%}'>About</a></li>
                 <li><a href='#'> Rooms & Suites</a></li>
                 <li><a href='registration.html'>Register</a></li>
+                <li><a href="{% url 'list'%}">View/Cancel</a></li>
             </ul>
         </nav>
     </aside>
@@ -164,8 +163,8 @@
                             <div class="select1_wrapper">
                                 <div class="input1_wrapper">
                                     <label>Type</label>
-                                    <div class="select1_inner">
-                                        <select class="select2 select" style="width: 100%;" name="room_type" id="type">
+                                    <div class="input1_inner">
+                                        <select class="select2 select" name="room_type" id="type">
                                             <option value="SUITE"> Suit</option>
                                             <option value="DELUXE"> Deluxe</option>
                                             <option value="SUPER_DELUXE"> Super Deluxe</option>
