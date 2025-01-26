@@ -1,16 +1,66 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Success</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
-<body>
-  <p>Yay! Room is available.</p>
-  <p>Allocated rooms: </p>
-  {%for room in allocated_rooms%}
-  <p>{{room.id}}</p>
-  {%endfor%}
-  <p>Total amount : {{amount}}</p>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div class="section-padding d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="col-md-5">
+            <div class="booking-box">
+                <div class="head-box text-center">
+                    <h6 class="text-light">Luxevista</h6>
+                    <h4 class="text-white">Success</h4>
+                </div>
+                <div class="booking-inner clearfix">
+                    <p class="text-light text-center">Yay! Room is available.</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-light">Allocated rooms:</p>
+                            <ul class="list-unstyled text-light">
+                                {% for room in allocated_rooms %}
+                                    <li>Room ID: {{ room.id }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-light">Total amount: <strong>{{ amount }}</strong></p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'list' %}" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.isotope.v3.0.2.js' %}"></script>
+    <script src="{% static 'js/pace.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/select2.js' %}"></script>
+    <script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
 </body>
+
 </html>
