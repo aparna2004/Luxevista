@@ -39,7 +39,7 @@
                 <li><a href='{%url 'home'%}'>Home</a></li>
                 <li><a href='{%url 'about'%}'>About</a></li>
                 <li><a href='#'> Rooms & Suites</a></li>
-                <li><a href='registration.html'>Register</a></li>
+                <li><a href="{% url 'logout'%}"> Logout</a></li>
                 <li><a href="{% url 'list'%}">View/Cancel</a></li>
             </ul>
         </nav>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="rooms2 mb-90 animate-box" data-animate-effect="fadeInUp">
+                    <div class="rooms2 mb-90 right animate-box" data-animate-effect="fadeInUp">
                         <figure><img src="{% static 'img/slider/1.jpg' %}" alt="" class="img-fluid"></figure>
                         <div class="caption">
                             <h3>5000 <span>/ Night</span></h3>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="rooms2 left animate-box" data-animate-effect="fadeInUp">
+                    <div class="rooms2 mb-90 left animate-box" data-animate-effect="fadeInUp">
                         <figure><img src="{% static 'img/slider/2.jpg'%}" alt="" class="img-fluid"></figure>
                         <div class="caption">
                             <h3>10000 <span>/ Night</span></h3>
@@ -164,7 +164,7 @@
                                 <div class="input1_wrapper">
                                     <label>Type</label>
                                     <div class="input1_inner">
-                                        <select class="select2 select" name="room_type" id="type">
+                                        <select class="select2 select" style="color: #ffffff80;" name="room_type" id="type">
                                             <option value="SUITE"> Suit</option>
                                             <option value="DELUXE"> Deluxe</option>
                                             <option value="SUPER_DELUXE"> Super Deluxe</option>
