@@ -15,7 +15,8 @@
 
     <body>
       
-        <div style="display:flex; justify-content:center; padding: 100px;">
+        <div style="display:flex; justify-content:center; padding: 100px; flex-direction: column; align-items: center;">
+            
             <div class="col-md-5">
                 <div class="booking-box">
                     <div class="head-box">
@@ -53,6 +54,16 @@
                             </div>
                         </form>
                     </div>
+                    {%if messages%}
+            <ul style="padding : 0; color: #AA8453">
+            {% for message in messages %}
+            <span>
+                <li style="display : inline;">{{message}}</li>
+            </span>
+            &nbsp;
+            {%endfor%}
+            </ul>
+            {% endif %}
                 </div>
             </div>
         </div>

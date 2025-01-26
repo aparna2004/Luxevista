@@ -89,8 +89,11 @@ def calculate_bill_amount(booking):
     booking_date = booking.booked_time
 
     # Retrieve room price details
-    room_price = RoomPrice.objects.get(room=room)
-
+    try:
+        room_price = RoomPrice.objects.get(room=room)
+    except :
+        return None
+    
     # Determine if the booking date falls on a weekday or a weekend
     total_amount = 0
     current_date = booking.check_in
@@ -174,8 +177,8 @@ def bookRoom(request, pk):
                 check_out=to_date,
                 number_of_occupants=occupants_in_room,
                 advance=0,  # You may adjust this based on your business logic
-                booked_from=timezone.now(),
-                booked_till=timezone.now(),
+                booked_from=from_date,
+                booked_till=to_date,
                 method="",  # You may set payment method based on your business logic
                 payment_status="",  # You may set payment status based on your business logic
             )
@@ -183,6 +186,10 @@ def bookRoom(request, pk):
             bill_amount = calculate_bill_amount(
                 reservation
             )  # You need to define this function
+            if not bill_amount :
+                messages.error(request, "Required type of rooms are full. Try booking another room type!")
+                return render(request, "base/book_room.html")
+            
             money += bill_amount
             Bill.objects.create(
                 booking=reservation,
