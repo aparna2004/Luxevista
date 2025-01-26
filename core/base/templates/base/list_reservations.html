@@ -103,15 +103,15 @@
         <!-- Menu -->
         <nav class="cappa-main-menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'hotel' 1 %}"> Rooms & Suites </a></li>
-                    <li><a href="{% url 'logout' %}"> Logout</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}"> Login</a></li>
-                    <li><a href="{% url 'register_customer' %}"> Register</a></li>
-                {% endif %}
+                <li><a href="{% url 'home'%}">Home</a></li>
+                <li><a href='{%url 'about' %}'>About</a></li>
+                {%if request.user.is_authenticated%}
+                    <li><a href='{%url 'hotel' 1 %}'> Rooms & Suites </a></li>
+                    <li><a href="{% url 'logout'%}"> Logout</a></li>
+                {%else%}
+                    <li><a href="{% url 'login'%}"> Login</a></li>
+                    <li><a href="{% url 'register_customer'%}"> Register</a></li>
+                {%endif%}
             </ul>
         </nav>
     </aside>

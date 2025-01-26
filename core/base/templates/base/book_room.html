@@ -36,11 +36,15 @@
         <!-- Menu -->
         <nav class="cappa-main-menu">
             <ul>
-                <li><a href='{%url 'home'%}'>Home</a></li>
-                <li><a href='{%url 'about'%}'>About</a></li>
-                <li><a href='#'> Rooms & Suites</a></li>
-                <li><a href="{% url 'logout'%}"> Logout</a></li>
-                <li><a href="{% url 'list'%}">View/Cancel</a></li>
+                <li><a href="{% url 'home'%}">Home</a></li>
+                <li><a href='{%url 'about' %}'>About</a></li>
+                {%if request.user.is_authenticated%}
+                    <li><a href="{% url 'logout'%}"> Logout</a></li>
+                    <li><a href="{% url 'list'%}">View/Cancel</a></li>
+                {%else%}
+                    <li><a href="{% url 'login'%}"> Login</a></li>
+                    <li><a href="{% url 'register_customer'%}"> Register</a></li>
+                {%endif%}
             </ul>
         </nav>
     </aside>
