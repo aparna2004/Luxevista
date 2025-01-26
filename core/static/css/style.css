@@ -88,9 +88,7 @@ b {
     font-weight: 400;
     color: #aa8453;
 }
-.custom{
-    color: hotpink;
-}
+
 /* text field */
 input[type="password"]:focus,
 input[type="email"]:focus,
